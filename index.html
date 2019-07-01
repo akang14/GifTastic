@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>The Office</h1>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div id="office-buttons">
+                        <button data-person="Michael Scott">Michael Scott</button>
+                        <button data-person="Dwight Schrute">Dwight Schrute</button>
+                        <button data-person="Jim Halpert">Jim Halpert</button>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <form id="form">
+                    <label for="office-input">Type in a character from The Office!</label><br>
+                    <input type="text" id="office-input">
+                    <input id="add-office" type="submit" value="Submit">
+                </form>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <div id="offices">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./assets/js/app.js">
+    </script>
+</body>
+
+</html>
