@@ -7,7 +7,7 @@ $(document).ready(function(){
 			$("#office-img").empty();
 			var input = $(this).attr("data-name");
 			var limit = 10;
-			var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + input + "&api_key=xjJ6RyjcZeCTLqtvfAjiuwaKpGr5HO9O&limit=10";;   
+			var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=xjJ6RyjcZeCTLqtvfAjiuwaKpGr5HO9O&q=" + input + "&limit=10&lang=en";
 
 			$.ajax({
 					url: queryURL, 
