@@ -1,14 +1,21 @@
-h1 {
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+#header{
+    text-decoration: underline;
+    text-align: center; 
+}
+
+.sport-button {
     text-align: center;
-    font-family: 'Raleway', sans-serif;
+    padding-top: 0px;
+    margin-right: 10px;
+    margin-top: 10px;
 }
-#form {
+
+.sport{
     float: left;
-    font-family: 'Raleway', sans-serif;
-}
-#office-buttons{
-    float: left;
-    font-family: 'Raleway', sans-serif;
-   
-    
+    margin: 10px 40px 10px 0px;
 }

@@ -1,47 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title>The Office</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
-		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-		crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-	</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./Assets/Css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>GifTastic</title>
+</head>
+
 <body>
+    <div class="container">
+        <div class="row" id="header">
+            <h1>New Buttons Appear Below!</h1>
+        </div>
+        <div class="row" id="addButton">
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-8" id="gifHolder"></div>
+            <div class="col-sm-4">
+                <strong>Add A Sport!</strong>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="What do you want to see?"
+                        aria-label="Recipient's username" aria-describedby="basic-addon2" id="sportInput">
+                    <div class="input-group-append">
+                        <button class="btn btn-info" type="button" id="addSport">Submit</button>
+                    </div>
+                </div>
 
-	<div class="container">
-		<div class="jumbotron">
-			<h1>Dunder Mifflin Giphy</h1>
-		</div>
+            </div>
+        </div>
+    </div>
 
-		<div class="row">
-			<div class="col-sm-8" id="office-buttons"></div>
-		</div>
 
-		<div class="row">
-			<div class="col-sm-8">
-				<form id="form">
-					<label for="user-input">Type in anything related to The Office!</label><br>
-					<input type="text" id="user-input">
-					<input id="officeadd" type="submit" value="Submit" class="btn btn-default">
-				</form>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-sm-8" id="office-img"></div>
-		</div>
-
-	</div>
-
-	<script src="./assets/js/app.js"></script>
+    <script src="./assets/JS/app.js"></script>
 </body>
 
 </html>

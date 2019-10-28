@@ -1,87 +1,104 @@
-$(document).ready(function(){
+//Define global variables
 
-	var chars = ["Michael Scott", "Jim Halpert","Pam Beesly"];
+//Declare array to hold strings inputted
+var topics = ["Michael Scott","Jim Halpert","Pam Beesly","Dwight Schrute"];
 
-	function showImgs(){
+//Create a function to dynamically add buttons to the html
+function createButton() {
 
-			$("#office-img").empty();
-			var input = $(this).attr("data-name");
-			var limit = 10;
-			var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=xjJ6RyjcZeCTLqtvfAjiuwaKpGr5HO9O&q=" + input + "&limit=10&lang=en";
+    //Clear the div we are adding buttons to so no multiples are added
+    $("#addButton").empty();
 
-			$.ajax({
-					url: queryURL, 
-					method: "GET"
-			}).done(function(response) {
+    //Generate buttons for each sport in the array
+    for (var i = 0; i < topics.length; i++) {
 
-					for(var i = 0; i < limit; i++) {    
+        var sportButton = $("<button>");
+        sportButton.addClass('sport-button');
+        sportButton.addClass('btn btn-success');
+        sportButton.attr('data-name', topics[i]);
+        sportButton.text(topics[i]);
+        var emptySpace = " ";
+        $('#addButton').append(sportButton);
+        $('#addButton').append(emptySpace);
+    }
+}
 
-							var displayDiv = $("<div>");
-							displayDiv.addClass("holder");
-					
-							var img = $("<img>");
-							img.attr("src", response.data[i].images.original_still.url);
-							img.attr("data-still", response.data[i].images.original_still.url);
-							img.attr("data-animate", response.data[i].images.original.url);
-							img.attr("data-state", "still");
-							img.attr("class", "gif");
-							displayDiv.prepend(img);
+//Create a function to get the GIF info for the sport
+function sportInfo() {
+    var input = $(this).attr("data-name");
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=xjJ6RyjcZeCTLqtvfAjiuwaKpGr5HO9O&q=" + input + "&limit=10&lang=en";
 
-							var rating = response.data[i].rating;
-							console.log(chars);
-							var pRating = $("<p>").text("Rating: " + rating);
-							displayDiv.prepend(pRating)
+    // Creating an AJAX call for the specific movie button being clicked
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        $("#gifHolder").empty();
+        var sportResults = response.data;
+        //For loop to retrieve 10 responses
+        for (i = 0; i < 10; i++) {
+            //Create a div to hold the data retrieved from the API
+            var sportDiv = $("<div class='sport'>");
 
-							$("#office-img").prepend(displayDiv);
-					}
-			});
-	}
+            //Create a variable to hold each data wanted
+            var rating = sportResults[i].rating;
+            var ratingHolder = $("<h6>").text("Rating: " + rating);
 
-	function renderButtons(){ 
+            //Variables for still images and gifs
+            var gifStill = sportResults[i].images.fixed_height_small_still.url;
+            var gifAnimate = sportResults[i].images.fixed_height_small.url;
+            
+            //Variable to hold gif
+            var gifHolder = $("<img>").attr("src", gifStill);
+            gifHolder.attr("data-still", gifStill);
+            gifHolder.attr("data-animate", gifAnimate);
+            //Add attribute that determines which link to use in function
+            gifHolder.attr("data-state", "still");
+            gifHolder.addClass("gif");
 
-			$("#office-buttons").empty();
+            sportDiv.append(ratingHolder);
+            sportDiv.append(gifHolder);
 
-			for (var i = 0; i < chars.length; i++){
+            $("#gifHolder").append(sportDiv);
+        };
+    });
+};
 
-					var newButton = $("<button>") 
-					newButton.attr("class", "btn btn-default");
-					newButton.attr("id", "input")  
-					newButton.attr("data-name", chars[i]); 
-					newButton.text(chars[i]); 
-					$("#office-buttons").append(newButton); 
-			}
-	}
+//Adding buttons to the array and html
+$('#addSport').on("click", function () {
+    //Prevent the page from reloading
+    event.preventDefault();
 
-	function imgState() {          
+    //Take input from form and push to array
+    var sportInput = $('#sportInput').val().trim();
+    //Prevent blank button
+    if (sportInput === "") {
+        return;
+    }
+    topics.push(sportInput);
 
-			var state = $(this).attr("data-state");
-			var animateImage = $(this).attr("data-animate");
-			var stillImage = $(this).attr("data-still");
-
-			if(state == "still") {
-					$(this).attr("src", animateImage);
-					$(this).attr("data-state", "animate");
-			}
-
-			else if(state == "animate") {
-					$(this).attr("src", stillImage);
-					$(this).attr("data-state", "still");
-			}   
-	}
-
-	$("#officeadd").on("click", function(){
-
-			var input = $("#user-input").val().trim();
-			form.reset();
-			chars.push(input);
-							
-			renderButtons();
-
-			return false;
-	})
-
-	renderButtons();
-
-	$(document).on("click", "#input", showImgs);
-	$(document).on("click", ".gif", imgState);
+    //Call function to create button
+    createButton();
 });
+
+//Retrieve data from Giphy
+$(document).on("click", ".sport-button", sportInfo);
+
+//Create on click to start and stop gif
+$(document).on("click", ".gif", function () {
+
+    var state = $(this).attr("data-state");
+
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+    }
+    else if (state === "animate") {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
+
+});
+
+//Call function on page load
+createButton();
