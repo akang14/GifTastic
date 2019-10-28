@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	var chars = ["Michael Scott", "Jim Halpert"];
+	var chars = ["Michael Scott", "Jim Halpert","Pam Beesly"];
 
 	function showImgs(){
 
