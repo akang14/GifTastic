@@ -1,10 +1,14 @@
 h1 {
     text-align: center;
+    font-family: 'Raleway', sans-serif;
 }
 #form {
     float: left;
+    font-family: 'Raleway', sans-serif;
 }
 #office-buttons{
     float: left;
+    font-family: 'Raleway', sans-serif;
+   
     
 }
